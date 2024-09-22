@@ -22,7 +22,7 @@
 * Axios
 * Redux
 * Redux saga
-* Styled-somponents
+* Styled-components
 * Realmdb (Banco de dados offline)
 
 <br> 

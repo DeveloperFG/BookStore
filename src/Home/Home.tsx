@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Logo, Title, Input, CenterView, Botao, 
-          BotaoText, List, CartView, BotaoCart, CartQuant, TitleQuant } from './styles';
+
+import * as Ho from './styles'
 
 import { StyleSheet, Text, View, Modal,TouchableOpacity, Keyboard } from 'react-native';
 
@@ -192,140 +192,101 @@ export default function Home() {
 
  return (
 
-   <Container>
-      <Modal
+   <Ho.Container>
+      <Ho.Modal
             visible={openModal}
             statusBarTranslucent={true}
             transparent={true}
             animationType="slide"
           >
-            <View style={styles.content}>
-              <View style={styles.card}>
-                    <View style={{width:'100%', height:'auto', flexDirection:'column', alignItems:'center', justifyContent:'space-between', padding: 4,}}>  
+            <Ho.ViewCenterModal>
+              <Ho.ViewCardModal>
+                    <Ho.ViewCardItensModal>  
+
+                    {cart != null && (
+                         <Ho.ViewCardVazioModal>
+                            <Ho.TituloCardVazioModal>ITENS NO CARRINHO...</Ho.TituloCardVazioModal>
+                          </Ho.ViewCardVazioModal>
+                    )}
+
                         {listProdutos.map((item, index)=>(
-                              <View key={index} style={{ width:"100%", height:'auto', flexDirection: 'row', alignItems:'center',
-                                         justifyContent:'space-between', backgroundColor:'#039941', padding: 2, marginBottom: 10}}>
-                                  <Text style={{color:'#ffffff', marginLeft:4, fontWeight: 500}}>{item.nome}</Text>
-                                  <Text style={{color:'#ffffff', marginRight: 4}}>{item.preco}</Text>
-                              </View>
+                              <Ho.ViewListItensModal key={index}>
+                                  <Ho.TituloItensCartModal>{item.nome}</Ho.TituloItensCartModal>
+                                  <Ho.TextoItensCartModal >{item.preco}</Ho.TextoItensCartModal>
+                              </Ho.ViewListItensModal>
                           ))}
-                    </View>
+                    </Ho.ViewCardItensModal>
 
                     {cart === null && (
-                        <Text>
+                        <Ho.TituloCardVazioModal>
                            Você ainda não tem itens no carrinho...
-                        </Text>
+                        </Ho.TituloCardVazioModal>
                     )}
 
   
-                <TouchableOpacity
-                  style={[
-                    styles.button,
-                    {
-                      width: "100%",
-                      marginTop: 24,
-                      backgroundColor: "rgba(0,0,0,0.1)",
-                    },
-                  ]}
+                <Ho.ButtonCardModal
                   onPress={() => setOpenModal(false)}
                 >
-                  <Text style={[styles.text, { color: "black" }]}>Close</Text>
-                </TouchableOpacity>
+                  <Ho.TextoCloseCardModal>Close</Ho.TextoCloseCardModal>
+                </Ho.ButtonCardModal>
 
-              </View>
-            </View>
-          </Modal>
+              </Ho.ViewCardModal>
+            </Ho.ViewCenterModal>
+          </Ho.Modal>
 
-    <CartView>
+    <Ho.CartView>
             <Icon name='users' size={30} color='#fff' onPress={()=> navigation.navigate('Users')}/>
-        <BotaoCart onPress={handleModal}>
-            <CartQuant>
-              <TitleQuant> {listPedidosCart?.length} </TitleQuant>
-            </CartQuant>
+        <Ho.BotaoCart onPress={handleModal}>
+            <Ho.CartQuant>
+              <Ho.TitleQuant> {listPedidosCart?.length} </Ho.TitleQuant>
+            </Ho.CartQuant>
           <Icon name='shopping-cart' size={30} color='#fff'/>
-        </BotaoCart>
-    </CartView>
+        </Ho.BotaoCart>
+    </Ho.CartView>
 
-    <Logo> Book Store</Logo>
+      <Ho.Logo> Book Store</Ho.Logo>
 
-    <Title>Nome</Title>
-    <Input 
-    autoCapitalize="none" 
-    autoCorrect={false} 
-    value={nome}
-    onChangeText={ (text) => setNome(text) }
-    />
+      <Ho.Title>Nome</Ho.Title>
+          <Ho.Input 
+          autoCapitalize="none" 
+          autoCorrect={false} 
+          value={nome}
+          onChangeText={ (text) => setNome(text) }
+      />
 
-    <Title>Preço</Title>
-    <Input 
-    autoCapitalize="none" 
-    autoCorrect={false}
-    value={preco}
-    onChangeText={ (text) => setPreco(text) }
-    />
+      <Ho.Title>Preço</Ho.Title>
+          <Ho.Input 
+          autoCapitalize="none" 
+          autoCorrect={false}
+          value={preco}
+          onChangeText={ (text) => setPreco(text) }
+      />
 
-    <CenterView>
-      <Botao 
-      onPress={addBook}
-      disabled={disabledBtn} 
-      style={{opacity: disabledBtn ? 0.1 : 1 }}
-      >
-        <BotaoText>Cadastrar</BotaoText>
-      </Botao>
+      <Ho.CenterView>
+          <Ho.Botao 
+            onPress={addBook}
+            disabled={disabledBtn} 
+            style={{opacity: disabledBtn ? 0.1 : 1 }}
+          >
+            <Ho.BotaoText>Cadastrar</Ho.BotaoText>
+          </Ho.Botao>
 
-      <Botao 
-       onPress={editBook}
-      >
-        <BotaoText>Editar</BotaoText>
-      </Botao>
-    </CenterView>
- 
-
-    <List
-    showsVerticalScrollIndicator={false}
-    keyboardShouldPersistTaps="handled"
-    data={books}
-    keyExtractor={ item => String(item.id) }
-    renderItem={ ({ item }) => ( <Books data={item}  editar={editarBook} excluir={excluirBook} comprar={comprarBook}  /> ) }
-    /> 
-   </Container>
-  );
+          <Ho.Botao 
+          onPress={editBook}
+          >
+            <Ho.BotaoText>Editar</Ho.BotaoText>
+          </Ho.Botao>
+      </Ho.CenterView>
   
-} 
 
-// css para montar Modal
-const styles = StyleSheet.create({
-  container: {
-      flex: 1,
-      width: '100%',
-      height: '100%',
-      alignItems: 'center',
-      backgroundColor: '#000'
-  },
-    card: {
-      width: "90%",
-      padding: 20,
-      backgroundColor: "white",
-      borderRadius: 8,
-    },
-    content: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "rgba(0,0,0,0.5)",
-    },
-    text: {
-      fontWeight: "600",
-      fontSize: 16,
-      color: "white",
-    },
-    button: {
-      width: "30%",
-      backgroundColor: "black",
-      justifyContent: "center",
-      alignItems: "center",
-      height: 56,
-      borderRadius: 8,
-    },
+      <Ho.List
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+        data={books}
+        keyExtractor={ item => String(item.id) }
+        renderItem={ ({ item }) => ( <Books data={item}  editar={editarBook} excluir={excluirBook} comprar={comprarBook}  /> ) }
+        /> 
+    </Ho.Container>
+    );
     
-});
+  } 

@@ -87,6 +87,81 @@ export const BotaoCart = styled.TouchableOpacity`
   padding: 5px;
 `;
 
+export const Modal = styled.Modal`
+
+`;
+
+export const ViewCenterModal = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+
+`;
+
+export const ViewCardModal = styled.View`
+    width: 90%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+`;
+
+export const ViewCardItensModal = styled.View`
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+`;
+
+export const ViewCardVazioModal = styled.View`
+   margin-bottom: 8px;
+`;
+
+export const TituloCardVazioModal = styled.Text`
+  font-weight: 700;
+`;
+
+export const ViewListItensModal = styled.View`
+    width: 100%;
+    height: auto;
+    background-color: #039941;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+    margin-bottom: 10px;
+`;
+
+export const TituloItensCartModal = styled.Text`
+    color: #fff ;
+    margin-left: 4px;
+    font-weight: 500;
+`;
+
+export const TextoItensCartModal = styled.Text`
+    color: #fff ;
+    margin-left: 4px;
+`;
+
+
+export const ButtonCardModal = styled.TouchableOpacity`
+    width: 100%;
+    background-color: gray;
+    justify-content: center;
+    align-items: center;
+    height: 56px;
+    border-radius: 8px;
+`;
+
+export const TextoCloseCardModal = styled.Text`
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    
+`;
+
 export const List = styled.FlatList.attrs({
   contentContainerStyle: { paddingHorizontal: 20 }
 })`

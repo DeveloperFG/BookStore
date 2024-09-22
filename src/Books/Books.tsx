@@ -1,27 +1,28 @@
 import React from 'react';
-import { Container, Nome, Preco, CenterView, Botao, BotaoText } from './styles';
+
+import * as Bo from './styles'
 
 export default function Books({ data, editar, excluir, comprar }) {
 
  return (
-   <Container>
-     <Nome> {data.nome} </Nome>
-     <Preco> R$ {data.preco} </Preco>
+   <Bo.Container>
+     <Bo.Nome> {data.nome} </Bo.Nome>
+     <Bo.Preco> R$ {data.preco} </Bo.Preco>
 
-     <CenterView>
-       <Botao onPress={()=> editar(data) }>
-         <BotaoText>Editar</BotaoText>
-       </Botao>
+     <Bo.CenterView>
+       <Bo.Botao onPress={()=> editar(data) }>
+         <Bo.BotaoText>Editar</Bo.BotaoText>
+       </Bo.Botao>
 
-       <Botao onPress={()=> excluir(data)}>
-         <BotaoText>Excluir</BotaoText>
-       </Botao>
+       <Bo.Botao onPress={()=> excluir(data)}>
+         <Bo.BotaoText>Excluir</Bo.BotaoText>
+       </Bo.Botao>
 
-       <Botao onPress={()=> comprar(data)}>
-         <BotaoText>Carrinho</BotaoText>
-       </Botao>
-     </CenterView>
+       <Bo.Botao onPress={()=> comprar(data)}>
+         <Bo.BotaoText>Carrinho</Bo.BotaoText>
+       </Bo.Botao>
+     </Bo.CenterView>
 
-   </Container>
+   </Bo.Container>
   );
 }

@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
 
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUsers } from '../redux/cart/slice';
 
+import * as Us from './styles'
 
 export default function Users(){
 
@@ -15,21 +15,20 @@ export default function Users(){
     }
 
     return(
-        <View >
-        
-            <Button title="Carregar usuários" onPress={handleUsers}/>
+        <Us.Container >
+            <Us.Button title="Carregar usuários" onPress={handleUsers}/>
 
                 {loading && (
-                    <Text>Carredando lista de usuários...</Text>
+                    <Us.TextoLoadList>Carredando lista de usuários...</Us.TextoLoadList>
                 )}
 
-            <View >
+            <Us.ViewCenter >
                 {!loading && users.map((user, index)=>(
-                    <View key={index}>
-                       <Text>ID: {user.id} | {user.name} </Text>    
-                    </View>
+                    <Us.ViewItens key={index}>
+                       <Us.TextoList>ID: {user.id} | {user.name} </Us.TextoList>    
+                    </Us.ViewItens>
                 ))}
-            </View>
-        </View>
+            </Us.ViewCenter>
+        </Us.Container>
     )
 }

@@ -123,6 +123,11 @@ export const TituloCardVazioModal = styled.Text`
   font-weight: 700;
 `;
 
+export const TituloCardTotalModal = styled.Text`
+  font-weight: 700;
+  color: blue;
+`;
+
 export const ViewListItensModal = styled.View`
     width: 100%;
     height: auto;

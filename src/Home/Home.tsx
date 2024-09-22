@@ -37,6 +37,8 @@ export default function Home() {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const [total, setTotal] = useState();
+
   useEffect(()=>{
 
     loadBooks = async () => {
@@ -186,7 +188,11 @@ export default function Home() {
     }
 
       function handleModal(){
-         setOpenModal(true)
+        let colunaPreco = listProdutos.map((item)=> parseFloat(item.preco))
+        const soma = colunaPreco.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+        setTotal(soma)
+        setOpenModal(true)
 
     }
 
@@ -223,7 +229,10 @@ export default function Home() {
                         </Ho.TituloCardVazioModal>
                     )}
 
-  
+                    <Ho.TituloCardTotalModal>
+                        R$: {total?.toFixed(2)}
+                    </Ho.TituloCardTotalModal> 
+              
                 <Ho.ButtonCardModal
                   onPress={() => setOpenModal(false)}
                 >

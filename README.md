@@ -2,7 +2,7 @@
 
 <p align="center">
  📝 Descrição <br> 
-   Aplicativo para compras de livros  "apenas para estudos"  <br> 
+   Aplicativo para compras de livros <br> 
 </p>
 
 
@@ -43,7 +43,8 @@
 * Armazenamento de livros, nome + preco de forma offline.
 * Criar, Editar, Excluir livros
 * Gerar carrinho de compras, ultizando distribuição de estado global com redux
-* Requisições assincronas ultilizando redux saga + axios
+* Soma total dos livros
+* Requisições assincronas de uma API lista de clientes ultilizando redux saga + axios
 
 <br>
 <br> 

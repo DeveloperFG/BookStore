@@ -9,7 +9,7 @@ function* fetchUsers(){
     try{
         yield delay(2000)
 
-        const response = yield call(axios.get, "https://jsonplaceholder.typicode.com/users/")
+        const response = yield call(axios.get, "https://infos-api.vercel.app")
         // console.log(response.data)
         yield put(fetchUsersSuccess(response.data))
 
